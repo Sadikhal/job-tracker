@@ -22,8 +22,6 @@ Simulates real technical screening interviews using an adaptive AI engine.
 
 #### **📝 Strict Evaluation Protocol**
 
-> _"No live coding. Pure conceptual understanding."_
-
 - **🎯 Brutal Scoring (0-10)**: From **0.0** (Gibberish) to **10.0** (Mastery).
 - **🚫 Anti-Hallucination**: Penalizes incorrect technical facts or fabricated answers.
 - **📊 Detailed Feedback**:
@@ -35,7 +33,6 @@ Simulates real technical screening interviews using an adaptive AI engine.
 
 - **Groq API**: OpenAI-compatible streaming endpoints.
 - **Resilience**: Robust fallbacks for API failures (429/500).
-- **Parsing**: Advanced regex-based JSON extraction.
 - **State Machine**: 6-phase interview tracking architecture.
 
 ---
