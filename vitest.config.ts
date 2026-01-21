@@ -7,6 +7,12 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/e2e/**', // Exclude Playwright E2E tests
+      '**/.{idea,git,cache,output,temp}/**',
+    ],
     alias: {
       '@': path.resolve(__dirname, './')
     }
