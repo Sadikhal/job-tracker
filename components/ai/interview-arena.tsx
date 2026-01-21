@@ -216,12 +216,12 @@ export default function InterviewArena({
                       <p className="text-xs font-black uppercase text-primary-500 tracking-[0.4em]">Critical Execution Assessment</p>
                     </div>
                   </div>
-                  <div className="bg-white/5 p-1 md:p-2 rounded-3xl border border-white/10 min-w-[50px] text-center">
+                  <div className="bg-white/5 p-1 md:p-2 rounded-3xl border border-white/10 min-w-[50px] text-center px-3">
                     <div className="text-base md:text-3xl font-black text-white tabular-nums">
                       {reportData?.score || "0.0"}
                       <span className="text-sm text-neutral-silver/40 font-bold ml-1">/10</span>
                     </div>
-                    <div className="text-[8px] font-black uppercase text-neutral-silver/60  mt-2">Composite Score</div>
+                    <div className="text-[7px] md:text-[8px] font-black uppercase text-neutral-silver/60  mt-2">Composite Score</div>
                   </div>
                 </div>
 
@@ -267,7 +267,7 @@ export default function InterviewArena({
                 <div className="pt-6">
                   <Button onClick={onClose} className="w-full h-18 bg-white text-neutral-obsidian hover:bg-primary-500 hover:text-white font-black uppercase tracking-[0.08em] text-[11px] rounded-[1.5rem] shadow-2xl transition-all active:scale-95 group overflow-hidden relative">
                     <span className="relative z-10 flex items-center justify-center gap-3">
-                      Terminate Simulation & Sync Knowledge
+                      Terminate Simulation
                       <CheckCircle2 className="h-4 w-4" />
                     </span>
 
