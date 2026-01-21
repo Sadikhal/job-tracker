@@ -194,7 +194,7 @@ export default function DashboardPage() {
                 </button>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 px-2">
                 {mainMode === "pipeline" ? (
                   <>
                     <h1 className="text-5xl md:text-7xl font-black text-foreground tracking-tighter uppercase leading-[0.8]">
