@@ -140,7 +140,7 @@ export default function DashboardPage() {
       <div className="relative border-b border-white/5 bg-neutral-obsidian overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-500/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
 
-        <div className="container mx-auto px-6 py-16 relative">
+        <div className="container mx-auto lg:px-6 px-2 md:px-4 py-16 relative">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
             <div className="space-y-8">
               <div className="flex items-center gap-4">
@@ -168,9 +168,9 @@ export default function DashboardPage() {
                 <button
                   onClick={() => setMainMode("ailab")}
                   className={cn(
-                    "flex items-center gap-3 px-6 py-3 rounded-2xl transition-all duration-500 group relative overflow-hidden",
+                    "flex items-center gap-3 px-2 lg:px-5 py-3 rounded-2xl transition-all duration-500 group relative overflow-hidden",
                     mainMode === "ailab"
-                      ? "bg-white text-neutral-obsidian shadow-[0_0_30px_rgba(255,255,255,0.3)] scale-105"
+                      ? "bg-white text-neutral-obsidian shadow-glow-white scale-105"
                       : "text-neutral-silver hover:bg-white/5 border border-white/5",
                   )}
                 >
@@ -188,7 +188,7 @@ export default function DashboardPage() {
                         : "group-hover:text-primary-500",
                     )}
                   />
-                  <span className="text-sm font-black uppercase tracking-widest relative">
+                  <span className="text-sm font-black uppercase lg:tracking-widest tracking-normal relative">
                     AI Career Lab
                   </span>
                 </button>

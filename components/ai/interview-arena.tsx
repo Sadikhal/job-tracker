@@ -216,8 +216,8 @@ export default function InterviewArena({
                       <p className="text-xs font-black uppercase text-primary-500 tracking-[0.4em]">Critical Execution Assessment</p>
                     </div>
                   </div>
-                  <div className="bg-white/5 p-3 rounded-3xl border border-white/10 min-w-[50px] text-center">
-                    <div className="text-3xl font-black text-white tabular-nums">
+                  <div className="bg-white/5 p-1 md:p-2 rounded-3xl border border-white/10 min-w-[50px] text-center">
+                    <div className="text-base md:text-3xl font-black text-white tabular-nums">
                       {reportData?.score || "0.0"}
                       <span className="text-sm text-neutral-silver/40 font-bold ml-1">/10</span>
                     </div>

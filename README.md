@@ -2,7 +2,7 @@
 
 ![Project Banner](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge) ![Coverage](https://img.shields.io/badge/Tests-Passing-success?style=for-the-badge) ![AI Engine](https://img.shields.io/badge/AI%20Engine-Groq%20Llama%203-blueviolet?style=for-the-badge)
 
-A **production-grade**, full-stack career management platform that combines advanced job application tracking with AI-powered technical interview simulation. Built with **Next.js 16**, **TypeScript**, and **Groq (Llama-3.3-70b)**, featuring enterprise-level testing infrastructure and automated CI/CD.
+A **production-grade**, full-stack career management platform that combines advanced job application tracking with AI-powered technical mock interview simulation. Built with **Next.js 16**, **TypeScript**, and **Groq (Llama-3.3-70b)**, featuring enterprise-level testing infrastructure and automated CI/CD.
 
 ---
 
@@ -10,121 +10,76 @@ A **production-grade**, full-stack career management platform that combines adva
 
 ### 🤖 AI Career Lab - Technical Interview Simulator
 
-The crown jewel of this platform is a sophisticated AI interview system that simulates real technical screening interviews.
+Simulates real technical screening interviews using an adaptive AI engine.
 
-#### **Intelligent Interview Engine**
+#### **🔥 Key Capabilities**
 
-- **Advanced AI Persona**: Powered by Groq's Llama-3.3-70b model, the system adopts a "Senior Technical Lead" persona with human-like conversation flow
-- **Adaptive Difficulty Scaling**: Automatically adjusts question complexity based on the candidate's experience level:
-  - **Fresher Mode**: Focuses on fundamentals (React basics, JavaScript core concepts, CSS fundamentals)
-  - **Senior Mode**: Emphasizes system design, architectural patterns, and production debugging scenarios
-- **Real-time Streaming**: Leverages Groq's ultra-fast LPU (Language Processing Unit) for near-instant responses, creating a natural conversation rhythm
-- **Context-Aware Follow-ups**: The AI analyzes previous answers to generate relevant follow-up questions, mimicking real interviewer behavior
+| Feature                    | Description                                                                                      |
+| :------------------------- | :----------------------------------------------------------------------------------------------- |
+| **🧠 Intelligent Engine**  | "Senior Technical Lead" persona (Llama-3.3-70b) with adaptive difficulty from Fresher to Senior. |
+| **⚡ Real-time Streaming** | Instant, natural responses powered by Groq's LPU.                                                |
+| **🔄 Context-Aware**       | Generates relevant follow-ups based on your previous answers.                                    |
 
-#### **Strict Evaluation Protocol**
+#### **📝 Strict Evaluation Protocol**
 
-- **Brutal Scoring System (0-10 scale)**:
-  - **0.0-1.5**: Low-effort responses, gibberish, or evasive answers (e.g., single-word replies like "yes", "no", "I don't know")
-  - **2.0-4.5**: Significant knowledge gaps, vague explanations, or incorrect technical facts
-  - **5.0-7.0**: Competent foundational knowledge but lacks architectural depth
-  - **8.0-10.0**: Mastery-level responses with precise terminology and production insight
-- **Anti-Hallucination Logic**: Penalizes candidates who provide technically incorrect information or fabricate answers
-- **Non-Negotiable Standards**: The AI enforces strict theoretical question-only policy—no live coding tasks, ensuring focus on conceptual understanding
+> _"No live coding. Pure conceptual understanding."_
 
-#### **Comprehensive Feedback Reports**
+- **🎯 Brutal Scoring (0-10)**: From **0.0** (Gibberish) to **10.0** (Mastery).
+- **🚫 Anti-Hallucination**: Penalizes incorrect technical facts or fabricated answers.
+- **📊 Detailed Feedback**:
+  - **Gap Analysis**: Specific areas to improve.
+  - **Actionable Advice**: Curated resources for growth.
+  - **Contextual**: Tailored to your seniority level.
 
-After the interview concludes, candidates receive a detailed markdown report featuring:
+#### **⚙️ Technical Underpinnings**
 
-- **Overall Score**: Numerically quantified performance metric
-- **Gap Analysis**: Specific technical areas requiring improvement (e.g., "Event Loop Internals", "CSS Grid vs Flexbox Trade-offs")
-- **Actionable Advice**: Concrete next steps for skill development, including recommended resources and focus areas
-- **Experience-Level Contextualization**: Feedback is tailored to whether you're a junior, mid-level, or senior engineer
-
-#### **Technical Implementation Highlights**
-
-- **Groq API Integration**: OpenAI-compatible REST endpoints with streaming support
-- **Robust Error Handling**: Graceful fallback to score 0.0 on API failures (429 rate limits, 500 server errors)
-- **JSON Extraction Logic**: Advanced regex-based parsing to handle markdown-wrapped responses from the AI
-- **Session State Management**: React state machine tracks interview progression through 6 phases (intro + 5 technical questions)
+- **Groq API**: OpenAI-compatible streaming endpoints.
+- **Resilience**: Robust fallbacks for API failures (429/500).
+- **Parsing**: Advanced regex-based JSON extraction.
+- **State Machine**: 6-phase interview tracking architecture.
 
 ---
 
 ### 📋 Advanced Job Application Tracking
 
-A feature-rich Kanban system designed for managing hundreds of applications across multiple stages.
+Manage your career pipeline with a high-performance Kanban system.
 
-#### **Visual Kanban Board**
+#### **🏗️ Visual Kanban Board**
 
-- **Drag-and-Drop Pipeline**: Built with `@dnd-kit` for smooth, accessible drag interactions
-- **Five Default Stages**:
-  1. **Wish List**: Companies you're targeting but haven't applied to yet
-  2. **Applied**: Applications submitted and awaiting response
-  3. **Interviewing**: Active interview processes
-  4. **Offer**: Received job offers
-  5. **Rejected**: Closed opportunities (for reflection and learning)
-- **Real-time Optimistic Updates**: UI updates instantly before server confirmation, then rolls back on failure
-- **Automatic Order Management**: Server-side logic maintains card order integrity when dragging across columns
+| Stage               | Description                                   |
+| :------------------ | :-------------------------------------------- |
+| **🌟 Wish List**    | Target companies you haven't applied to yet.  |
+| **📨 Applied**      | Applications submitted and awaiting response. |
+| **🗣️ Interviewing** | Active interview loops in progress.           |
+| **🎉 Offer**        | Received job offers!                          |
+| **❌ Rejected**     | Closed opportunities for reflection.          |
 
-#### **Rich Application Cards**
+#### **💎 Rich Features**
 
-Each job card displays:
-
-- **Core Information**: Company name, position title, location
-- **Financial Details**: Salary range (validated with strict regex: `$120k`, `100000`, `90k-110k`)
-- **Metadata**: Application URL, custom tags (e.g., "React", "Remote"), notes
-- **Timestamps**: Creation and last update dates
-- **Status Badges**: Visual indicators for application stage
-- **Quick Actions**: Edit, Delete, and Launch AI Interview buttons
-
-#### **Intelligent Search & Filtering**
-
-- **Debounced Search**: 300ms delay prevents excessive re-renders during typing
-- **Multi-Field Matching**: Searches across company name, position, location, and tags simultaneously
-- **Real-time Results**: Instant filtering without page reloads
-- **Persistent State**: Search terms survive page navigation
-
-#### **Data Export**
-
-- **One-Click CSV Export**: Generates timestamped CSV files with all application data
-- **Formatted Output**: Includes company, position, status, location, salary, tags, notes, and description
-- **Excel-Compatible**: Uses `papaparse` for proper CSV formatting
+- **🖱️ Drag-and-Drop**: Smooth `@dnd-kit` interactions with optimistic UI updates.
+- **📇 Smart Cards**:
+  - **Salary Validation**: Strict regex checks (e.g., `$120k`).
+  - **Metadata**: Custom tags, URLs, and notes.
+- **🔍 Intelligent Search**: Debounced (300ms), multi-field filtering across all data.
+- **📤 Data Export**: One-click **CSV Export** (Excel-compatible).
 
 ---
 
 ### 🛡️ Enterprise-Grade Security & Auth
 
-#### **Modern Authentication**
+Built-in protection for your data.
 
-- **Better Auth Integration**: Leverages the latest Better Auth v1.4+ with MongoDB adapter
-- **Email/Password Flow**: Secure credential-based authentication with bcrypt hashing
-- **Session Management**: Cookie-based sessions with 1-hour cache for performance
-- **Auto-Board Initialization**: Database hook automatically creates a "Job Hunt" board for new users
-
-#### **Authorization Middleware**
-
-- **Server Action Protection**: Every mutation verifies session ownership
-- **Row-Level Security**: Database queries filter by `userId` to prevent unauthorized access
-- **Board Ownership Checks**: Validates user owns the board before allowing modifications
+- **🔒 Authentication**: **Better Auth** (v1.4+) with MongoDB adapter.
+- **🔑 Secure Flow**: Email/Password with **bcrypt** hashing.
+- **⚡ Sessions**: High-performance cached cookie sessions.
+- **🛡️ Authorization**:
+  - **Server Protection**: Strict session verification.
+  - **Row-Level Security**: Data scoped to `userId`.
+  - **Ownership Checks**: Board modification validation.
 
 ---
 
 ### 🎨 Premium UI/UX Design
-
-#### **Architectural Design System**
-
-- **Custom Color Palette**: "Obsidian & Lime" theme
-  - `--color-neutral-obsidian`: `#0a0a0b` (Deep blacks)
-  - `--color-primary-500`: `#84cc16` (Electric Lime accent)
-  - `--color-neutral-silver`: `#a1a1aa` (Muted text)
-- **Glassmorphism Effects**: Frosted glass cards with backdrop blur and subtle borders
-- **Micro-Interactions**: Hover states, scale transformations, glow effects on interactive elements
-- **Responsive Grid System**: Mobile-first design with breakpoints at `sm`, `md`, `lg`, `xl`
-
-#### **Typography**
-
-- **Primary Font**: Inter (body text, optimal readability)
-- **Display Font**: Outfit (headings, high impact)
-- **System Font Fallback**: Ensures consistency across all platforms
 
 #### **Animations**
 
@@ -246,10 +201,6 @@ npm run dev
 ### **Database Seeding (Optional)**
 
 Populate your database with sample applications:
-
-```bash
-npm run seed:jobs
-```
 
 This creates 15 professionally crafted job applications distributed across all 5 pipeline stages.
 
@@ -431,5 +382,5 @@ Ensure these are set in your hosting platform:
 - `GROQ_API_KEY`
 - `NEXT_PUBLIC_BETTER_AUTH_URL` (should be your production URL)
 - `BETTER_AUTH_SECRET`
----
 
+---

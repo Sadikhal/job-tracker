@@ -91,7 +91,7 @@ export default function AIPrepLab() {
                       className={cn(
                         "w-48 h-14 font-black uppercase tracking-[0.2em] text-xs rounded-2xl transition-all duration-500",
                         selectedDomain 
-                          ? "bg-white text-neutral-obsidian shadow-[0_0_30px_rgba(255,255,255,0.3)] hover:scale-105" 
+                          ? "bg-white text-neutral-obsidian shadow-glow-white hover:scale-105" 
                           : "bg-white/5 text-neutral-silver/30 cursor-not-allowed"
                       )}
                      >

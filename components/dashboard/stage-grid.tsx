@@ -53,7 +53,7 @@ export default function StageGrid({
       </div>
 
       {jobs.length === 0 ? (
-        <div className="flex flex-col items-center justify-center p-20 border-2 border-dashed border-white/5 rounded-[3rem] bg-white/[0.02] text-center space-y-6">
+        <div className="flex flex-col items-center justify-center p-12 border-2 border-dashed border-white/5 rounded-[3rem] bg-white/[0.02] text-center space-y-6">
           <div className="p-6 bg-white/5 rounded-full relative group">
             <div className="absolute inset-0 bg-primary-500/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
             <Ghost className="h-12 w-12 text-neutral-silver/20 relative animate-bounce-slow" />
