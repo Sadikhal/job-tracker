@@ -420,6 +420,7 @@ vercel
 vercel env add MONGODB_URI
 vercel env add GROQ_API_KEY
 vercel env add NEXT_PUBLIC_BETTER_AUTH_URL
+vercel env add BETTER_AUTH_SECRET
 ```
 
 ### **Environment Variables for Production**
@@ -429,6 +430,6 @@ Ensure these are set in your hosting platform:
 - `MONGODB_URI`
 - `GROQ_API_KEY`
 - `NEXT_PUBLIC_BETTER_AUTH_URL` (should be your production URL)
-
+- `BETTER_AUTH_SECRET`
 ---
 
