@@ -203,7 +203,7 @@ export default function InterviewArena({
           {showReport && (
             <div className="animate-in zoom-in-95 fade-in duration-1000 pt-8 pb-12 w-full">
               <div className="bg-neutral-charcoal/40 border border-primary-500/30 rounded-[2.5rem] p-3 space-y-10 shadow-lime-glow backdrop-blur-sm mx-auto max-w-5xl">
-                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-8 border-b border-white/5">
+                <div className="flex flex-col items-start md:items-center justify-between gap-4 pb-8 border-b border-white/5">
                   <div className="space-y-3">
                     <h3 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter flex items-center gap-4">
                       <div className="p-3 bg-primary-500/10 rounded-2xl">
@@ -216,7 +216,7 @@ export default function InterviewArena({
                       <p className="text-xs font-black uppercase text-primary-500 tracking-[0.4em]">Critical Execution Assessment</p>
                     </div>
                   </div>
-                  <div className="bg-white/5 p-1 md:p-2 rounded-3xl border border-white/10 min-w-[50px] text-center px-3">
+                  <div className="bg-white/5 p-1 md:p-2 rounded-3xl border border-white/10 w-full text-center px-3">
                     <div className="text-base md:text-3xl font-black text-white tabular-nums">
                       {reportData?.score || "0.0"}
                       <span className="text-sm text-neutral-silver/40 font-bold ml-1">/10</span>
