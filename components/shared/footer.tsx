@@ -93,7 +93,7 @@ export default function Footer() {
           </div>
 
           <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-neutral-silver/40">
+            <p className="text-[8px] md:text-[10px] font-black uppercase md:tracking-[0.2em] tracking-[0.08em] text-neutral-silver/40">
               &copy; {year} JOB TRACKER. Developed by <span className="text-primary-500 cursor-pointer transition-colors">Sadikhali P V</span>
             </p>
             <div className="flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-neutral-silver/40">
