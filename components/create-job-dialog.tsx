@@ -19,7 +19,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { jobApplicationSchema, type JobApplicationInput } from "@/lib/validations/job-application";
 import { toast } from "sonner";
-import { cn } from "@/lib/utils";
+import { cn, getErrorMessage } from "@/lib/utils";
 
 interface CreateJobApplicationDialogProps {
   columnId: string;
@@ -89,8 +89,8 @@ export default function CreateJobApplicationDialog({
       } else {
         toast.error(result.error || "Submission protocol failed");
       }
-    } catch (err) {
-      toast.error("Internal system error during submission");
+    } catch (error: unknown) {
+      toast.error(getErrorMessage(error, "Internal system error during submission"));
     } finally {
       setLoading(false);
     }

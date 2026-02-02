@@ -27,7 +27,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { jobApplicationSchema, type JobApplicationInput } from "@/lib/validations/job-application";
 import { toast } from "sonner";
-import { cn } from "@/lib/utils";
+import { cn, getErrorMessage } from "@/lib/utils";
 
 interface JobApplicationCardProps {
   job: JobApplication;
@@ -35,6 +35,7 @@ interface JobApplicationCardProps {
   dragHandleProps?: React.HTMLAttributes<HTMLElement>;
   onUpdate: (id: string, updates: any) => Promise<any>;
   onDelete: (id: string) => Promise<any>;
+  onMove: (id: string, columnId: string, order: number) => Promise<any>;
 }
 
 export default function JobApplicationCard({
@@ -43,6 +44,7 @@ export default function JobApplicationCard({
   dragHandleProps,
   onUpdate,
   onDelete,
+  onMove,
 }: JobApplicationCardProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -81,6 +83,8 @@ export default function JobApplicationCard({
     }
   }, [isEditing, job, reset]);
 
+
+
   async function onUpdateSubmit(data: JobApplicationInput) {
     setLoading(true);
     try {
@@ -93,14 +97,12 @@ export default function JobApplicationCard({
         tags: formattedTags,
       });
 
-      if (!result.error) {
-        toast.success("Job updated");
-        setIsEditing(false);
-      } else {
-        toast.error(result.error || "Update failed");
-      }
-    } catch (err) {
-      toast.error("Internal system error during update");
+      if (result?.error) throw new Error(result.error);
+
+      toast.success("Job updated");
+      setIsEditing(false);
+    } catch (error: unknown) {
+      toast.error(getErrorMessage(error, "Update protocol failed"));
     } finally {
       setLoading(false);
     }
@@ -109,26 +111,23 @@ export default function JobApplicationCard({
   async function handleDelete() {
     try {
       const result = await onDelete(job._id);
-      if (!result.error) {
-        toast.success("Application deleted");
-      } else {
-        toast.error("Delete failed");
-      }
-    } catch (err) {
-      toast.error("Internal system error during purge");
+      if (result?.error) throw new Error(result.error);
+      toast.success("Application deleted");
+    } catch (error: unknown) {
+      toast.error(getErrorMessage(error, "Purge failed"));
     }
   }
 
   async function handleMove(newColumnId: string) {
     try {
-      const result = await onUpdate(job._id, {
-        columnId: newColumnId,
-      });
-      if (!result.error) {
-        toast.success("Moved to " + columns.find(c => c._id === newColumnId)?.name);
-      }
-    } catch (err) {
-      toast.error("Move failed");
+      const targetCol = columns.find(c => c._id === newColumnId);
+      const newOrder = targetCol?.jobApplications?.length || 0;
+      const result = await onMove(job._id, newColumnId, newOrder);
+      
+      if (result?.error) throw new Error(result.error);
+      toast.success("Moved to " + targetCol?.name);
+    } catch (error: unknown) {
+      toast.error(getErrorMessage(error, "Deployment failed"));
     }
   }
 

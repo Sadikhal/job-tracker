@@ -13,6 +13,7 @@ interface StageGridProps {
   onAddJob: (data: any) => Promise<any>;
   onUpdate: (id: string, updates: any) => Promise<any>;
   onDelete: (id: string) => Promise<any>;
+  onMove: (id: string, columnId: string, order: number) => Promise<any>;
   allColumns: Column[];
 }
 
@@ -23,6 +24,7 @@ export default function StageGrid({
   onAddJob,
   onUpdate,
   onDelete,
+  onMove,
   allColumns,
 }: StageGridProps) {
   return (
@@ -79,6 +81,7 @@ export default function StageGrid({
                 columns={allColumns}
                 onUpdate={onUpdate}
                 onDelete={onDelete}
+                onMove={onMove}
               />
             </div>
           ))}

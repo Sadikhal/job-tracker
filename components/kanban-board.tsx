@@ -94,6 +94,7 @@ function DroppableColumn({
   addJob,
   updateJob,
   deleteJob,
+  onMove,
 }: {
   column: Column;
   config: typeof COLUMNS[0];
@@ -102,6 +103,7 @@ function DroppableColumn({
   addJob: (data: any) => Promise<any>;
   updateJob: (id: string, updates: any) => Promise<any>;
   deleteJob: (id: string) => Promise<any>;
+  onMove: (id: string, columnId: string, order: number) => Promise<any>;
 }) {
   const { setNodeRef, isOver } = useDroppable({
     id: column._id,
@@ -168,6 +170,7 @@ function DroppableColumn({
                 columns={sortedColumns}
                 updateJob={updateJob}
                 deleteJob={deleteJob}
+                onMove={onMove}
               />
             ))}
           </SortableContext>
@@ -193,11 +196,13 @@ function SortableJobCard({
   columns,
   updateJob,
   deleteJob,
+  onMove,
 }: {
   job: JobApplication;
   columns: Column[];
   updateJob: (id: string, updates: any) => Promise<any>;
   deleteJob: (id: string) => Promise<any>;
+  onMove: (id: string, columnId: string, order: number) => Promise<any>;
 }) {
   const {
     attributes,
@@ -227,6 +232,7 @@ function SortableJobCard({
         dragHandleProps={{ ...attributes, ...listeners }}
         onUpdate={updateJob}
         onDelete={deleteJob}
+        onMove={onMove}
       />
     </div>
   );
@@ -306,6 +312,7 @@ export default function KanbanBoard({ board, userId, moveJob, addJob, updateJob,
                 addJob={addJob}
                 updateJob={updateJob}
                 deleteJob={deleteJob}
+                onMove={moveJob}
               />
             );
           })}
@@ -328,6 +335,7 @@ export default function KanbanBoard({ board, userId, moveJob, addJob, updateJob,
               columns={sortedColumns} 
               onUpdate={updateJob} 
               onDelete={deleteJob} 
+              onMove={moveJob}
             />
           </div>
         ) : null}

@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Terminal, Send, CheckCircle2, AlertCircle, RefreshCw, Trophy, Target, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn, getErrorMessage } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import { getGeminiInterviewResponse, getGeminiInterviewReport } from "@/lib/actions/ai-interview";
 import { toast } from "sonner";
@@ -100,26 +100,27 @@ export default function InterviewArena({
         try {
           const report = await getGeminiInterviewReport([...messages, newUserMessage, { role: "ai", content: aiResponse }]);
           setReportData(report);
-        } catch (err) {
-          console.error("Report Generation Failed:", err);
+        } catch (err: unknown) {
+          console.error("Report Generation Failed:", getErrorMessage(err));
         } finally {
           setIsGeneratingReport(false);
           setShowReport(true);
         }
       }
-    } catch (error: any) {
-      console.error("AI Bridge Error:", error.message);
+    } catch (error: unknown) {
+      const errorMessage = getErrorMessage(error);
+      console.error("AI Bridge Error:", errorMessage);
       
       let fallbackMsg = "";
-      if (error.message === "API_KEY_MISSING") {
+      if (errorMessage === "API_KEY_MISSING") {
         toast.info("Gemini Key Missing: Using Tactical Simulation Engine.");
         fallbackMsg = "[FALLBACK ACTIVE] Protcols initialized. Describe your tech stack and next architectural challenge.";
         setCurrentStep(1);
-      } else if (error.message === "SAFETY_TRIGGERED") {
+      } else if (errorMessage === "SAFETY_TRIGGERED") {
         toast.error("AI Safety Filter Triggered. Reverting to Simulation.");
         fallbackMsg = "[SAFETY OVERRIDE] Input violates neutrality protocols. Re-routing to localized technical simulation...";
         setCurrentStep(currentStep === -1 ? 0 : currentStep);
-      } else if (error.message === "QUOTA_EXCEEDED") {
+      } else if (errorMessage === "QUOTA_EXCEEDED") {
         toast.error("Gemini Free Tier Quota Reached. Please wait 60 seconds.");
         fallbackMsg = "[QUOTA ALERT] You've reached the free tier limit. Please wait 60 seconds and try again, or continue with the local simulation...";
         setCurrentStep(currentStep === -1 ? 0 : currentStep);
