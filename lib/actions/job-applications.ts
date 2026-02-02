@@ -44,7 +44,6 @@ export async function createJobApplication(data: JobApplicationData) {
     return { error: "Missing required fields" };
   }
 
-  // Verify board ownership
   const board = await Board.findOne({
     _id: boardId,
     userId: session.user.id,
@@ -53,8 +52,6 @@ export async function createJobApplication(data: JobApplicationData) {
   if (!board) {
     return { error: "Board not found" };
   }
-
-  // Verify column belongs to board
 
   const column = await Column.findOne({
     _id: columnId,

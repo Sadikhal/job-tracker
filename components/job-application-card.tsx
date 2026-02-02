@@ -10,10 +10,6 @@ import {
 } from "./ui/dropdown-menu";
 import { Button } from "./ui/button";
 import {
-  deleteJobApplication,
-  updateJobApplication,
-} from "@/lib/actions/job-applications";
-import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -70,7 +66,6 @@ export default function JobApplicationCard({
     },
   });
 
-  // Re-sync form when job prop changes or dialog opens
   useEffect(() => {
     if (isEditing) {
       reset({

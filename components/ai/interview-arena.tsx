@@ -96,7 +96,6 @@ export default function InterviewArena({
       } else if (nextStep < totalSteps) {
         setCurrentStep(nextStep);
       } else {
-        // Final Turn - Generate Report after AI gives its final reaction/acknowledgment
         setIsGeneratingReport(true);
         try {
           const report = await getGeminiInterviewReport([...messages, newUserMessage, { role: "ai", content: aiResponse }]);

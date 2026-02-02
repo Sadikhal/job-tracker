@@ -20,7 +20,6 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Board, Column, JobApplication } from "@/lib/models/models.types";
-import { useBoard } from "@/lib/hooks/useBoards";
 import {
   CheckCircle2,
   Target,
@@ -29,10 +28,7 @@ import {
   AlertCircle,
   MoreHorizontal,
   Trash2,
-  Clock,
-  Layers
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -42,7 +38,6 @@ import {
 import { Button } from "./ui/button";
 import CreateJobApplicationDialog from "./create-job-dialog";
 import JobApplicationCard from "./job-application-card";
-// Removed duplicate import of useDroppable here
 
 interface KanbanBoardProps {
   board: Board;
@@ -269,7 +264,6 @@ export default function KanbanBoard({ board, userId, moveJob, addJob, updateJob,
     let targetColumnId: string = "";
     let newOrder: number = 0;
 
-    // Simplified DnD logic for bespoke UI system
     const overCol = sortedColumns.find(c => c._id === overId);
     if (overCol) {
        targetColumnId = overCol._id;

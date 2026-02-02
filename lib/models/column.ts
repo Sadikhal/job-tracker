@@ -9,7 +9,6 @@ export interface IColumn extends Document {
   updatedAt: Date;
 }
 
-// Board -> Columns -> JobApplications
 
 const ColumnSchema = new Schema<IColumn>(
   {

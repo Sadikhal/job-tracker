@@ -45,7 +45,6 @@ export function useBoard(initialBoard?: Board | null) {
   }
 
   async function updateJobDetails(id: string, updates: any) {
-    // Optimistic update
     const previousColumns = [...columns];
     setColumns((prev) => {
       return prev.map((col) => ({
@@ -70,7 +69,6 @@ export function useBoard(initialBoard?: Board | null) {
   }
 
   async function deleteJob(id: string) {
-    // Optimistic update
     const previousColumns = [...columns];
     let colId: string | null = null;
     
@@ -108,8 +106,6 @@ export function useBoard(initialBoard?: Board | null) {
         ...col,
         jobApplications: [...col.jobApplications],
       }));
-
-      // Find and remove job from the old column
 
       let jobToMove: JobApplication | null = null;
       let oldColumnId: string | null = null;

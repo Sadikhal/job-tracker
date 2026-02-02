@@ -285,7 +285,7 @@ export default function DashboardPage() {
                     const isActive = activeTabId === col._id;
                     const count = col.jobApplications?.length || 0;
 
-                    // Map icons based on column name
+                   
                     const name = col.name.toLowerCase();
                     let Icon = Target;
                     let activeColor = "text-primary-500";
