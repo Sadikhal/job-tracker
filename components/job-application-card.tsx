@@ -33,9 +33,9 @@ interface JobApplicationCardProps {
   job: JobApplication;
   columns: Column[];
   dragHandleProps?: React.HTMLAttributes<HTMLElement>;
-  onUpdate: (id: string, updates: any) => Promise<any>;
-  onDelete: (id: string) => Promise<any>;
-  onMove: (id: string, columnId: string, order: number) => Promise<any>;
+  onUpdate: (id: string, updates: Partial<Omit<JobApplicationInput, 'tags'>> & { tags?: string[] }) => Promise<{ data?: any; error?: string }>;
+  onDelete: (id: string) => Promise<{ data?: any; error?: string; success?: boolean }>;
+  onMove: (id: string, columnId: string, order: number) => Promise<{ data?: any; error?: string }>;
 }
 
 export default function JobApplicationCard({

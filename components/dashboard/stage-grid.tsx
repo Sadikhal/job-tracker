@@ -1,19 +1,18 @@
-"use client";
-
 import React from "react";
 import { JobApplication, Column, Board } from "@/lib/models/models.types";
 import JobApplicationCard from "../job-application-card";
 import { Ghost, Plus, Layers } from "lucide-react";
 import CreateJobApplicationDialog from "../create-job-dialog";
+import { JobApplicationInput } from "@/lib/validations/job-application";
 
 interface StageGridProps {
   jobs: JobApplication[];
   column: Column;
   boardId: string;
-  onAddJob: (data: any) => Promise<any>;
-  onUpdate: (id: string, updates: any) => Promise<any>;
-  onDelete: (id: string) => Promise<any>;
-  onMove: (id: string, columnId: string, order: number) => Promise<any>;
+  onAddJob: (data: Omit<JobApplicationInput, 'tags'> & { columnId: string; boardId: string; tags: string[] }) => Promise<{ data?: any; error?: string }>;
+  onUpdate: (id: string, updates: Partial<Omit<JobApplicationInput, 'tags'>> & { tags?: string[] }) => Promise<{ data?: any; error?: string }>;
+  onDelete: (id: string) => Promise<{ data?: any; error?: string; success?: boolean }>;
+  onMove: (id: string, columnId: string, order: number) => Promise<{ data?: any; error?: string }>;
   allColumns: Column[];
 }
 

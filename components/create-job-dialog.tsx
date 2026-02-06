@@ -24,19 +24,8 @@ import { cn, getErrorMessage } from "@/lib/utils";
 interface CreateJobApplicationDialogProps {
   columnId: string;
   boardId: string;
-  onAddJob: (data: any) => Promise<any>;
+  onAddJob: (data: Omit<JobApplicationInput, 'tags'> & { columnId: string; boardId: string; tags: string[] }) => Promise<{ data?: any; error?: string }>;
 }
-
-const INITIAL_FORM_DATA = {
-  company: "",
-  position: "",
-  location: "",
-  notes: "",
-  salary: "",
-  jobUrl: "",
-  tags: "",
-  description: "",
-};
 
 export default function CreateJobApplicationDialog({
   columnId,

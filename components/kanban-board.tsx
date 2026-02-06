@@ -42,7 +42,7 @@ import JobApplicationCard from "./job-application-card";
 interface KanbanBoardProps {
   board: Board;
   userId: string;
-  moveJob: (jobApplicationId: string, newColumnId: string, newOrder: number) => Promise<void>;
+  moveJob: (jobApplicationId: string, newColumnId: string, newOrder: number) => Promise<{ data?: any; error?: string }>;
   addJob: (data: any) => Promise<any>;
   updateJob: (id: string, updates: any) => Promise<any>;
   deleteJob: (id: string) => Promise<any>;

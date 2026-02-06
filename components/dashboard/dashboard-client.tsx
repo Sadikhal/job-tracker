@@ -38,6 +38,7 @@ function DashboardContent({ initialBoard, userId }: { initialBoard: Board; userI
   const [activeTabId, setActiveTabId] = useState<string | null>(null);
   const [mainMode, setMainMode] = useState<"pipeline" | "ailab">("pipeline");
 
+
   useEffect(() => {
     if (optimisticBoard?.columns?.length > 0 && !activeTabId) {
       setActiveTabId(optimisticBoard.columns[0]._id);
@@ -61,8 +62,10 @@ function DashboardContent({ initialBoard, userId }: { initialBoard: Board; userI
     }));
   }, [optimisticBoard, searchQuery]);
 
+
+
   const stats = useMemo(() => {
-    const defaultStats = { total: 0, wishlist: 0, applied: 0, interviewing: 0, offers: 0, rejected: 0 };
+    // const defaultStats = { total: 0, wishlist: 0, applied: 0, interviewing: 0, offers: 0, rejected: 0 };
     let total = 0, wishlist = 0, applied = 0, interviewing = 0, offers = 0, rejected = 0;
 
     optimisticBoard.columns.forEach((col) => {
@@ -78,6 +81,8 @@ function DashboardContent({ initialBoard, userId }: { initialBoard: Board; userI
 
     return { total, wishlist, applied, interviewing, offers, rejected };
   }, [optimisticBoard]);
+
+
 
   return (
     <div className="min-h-screen bg-background pb-10">
